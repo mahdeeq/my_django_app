@@ -22,11 +22,15 @@ from django.urls import path
 from django.urls import path, include
 from django.shortcuts import redirect
 
+from django.urls import path
+from .views import CustomLoginView
+
 urlpatterns = [
     path('', lambda request: redirect('note_list'), name='home'),  # Add this line
     path('admin/', admin.site.urls),
     path('hello/', include('notes.urls')),
     path('notes/', include('notes.urls')),
+    path('login/', CustomLoginView.as_view(), name='login'),
 ]
 
 
